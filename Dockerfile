@@ -3,7 +3,7 @@ MAINTAINER ome-devel@lists.openmicroscopy.org.uk
 
 RUN pip install -U pip
 RUN pip install dockerspawner==0.7.0
-RUN pip install https://github.com/manics/oauthenticator/archive/github-org-oauth.zip
+RUN pip install https://github.com/IDR/oauthenticator/archive/0.5.1-IDR1.zip
 
 RUN useradd user
 ADD run.sh /run.sh
