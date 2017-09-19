@@ -8,6 +8,8 @@ RUN pip install https://github.com/IDR/kubespawner/archive/0.5.2-IDR1.zip
 RUN pip install https://github.com/IDR/oauthenticator/archive/0.5.1-IDR2.zip
 RUN pip install jupyterhub-dummyauthenticator
 
+ADD https://raw.githubusercontent.com/jupyterhub/jupyterhub/0.7.2/examples/cull-idle/cull_idle_servers.py /srv/jupyterhub/
+
 RUN useradd user
 ADD run.sh /run.sh
 
