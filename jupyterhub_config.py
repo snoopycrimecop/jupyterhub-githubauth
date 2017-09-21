@@ -114,3 +114,14 @@ c.GitHubOrgOAuthenticator.github_organization_whitelist = os.getenv('IDR_JUPYTER
 c.GitHubOAuthenticator.oauth_callback_url_hostmap = json.loads(os.getenv('IDR_JUPYTER_GITHUB_CALLBACK_HOSTMAP', '{}'))
 c.GitHubOAuthenticator.client_id_hostmap = json.loads(os.getenv('IDR_JUPYTER_GITHUB_CLIENT_ID_HOSTMAP', '{}'))
 c.GitHubOAuthenticator.client_secret_hostmap = json.loads(os.getenv('IDR_JUPYTER_GITHUB_SECRET_HOSTMAP', '{}'))
+
+
+######################################################################
+# IDR internal connection settings
+######################################################################
+
+c.Spawner.environment = {
+    'IDR_HOSTNAME': os.getenv('IDR_HOSTNAME'),
+    'IDR_USER': os.getenv('IDR_USER'),
+    'IDR_PASSWORD': os.getenv('IDR_PASSWORD'),
+}
