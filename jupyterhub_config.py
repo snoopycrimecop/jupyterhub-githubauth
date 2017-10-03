@@ -99,9 +99,9 @@ c.KubeSpawner.user_storage_pvc_ensure = True
 # - https://github.com/IDR/oauthenticator/
 ######################################################################
 
-c.GitHubOAuthenticator.oauth_callback_url = os.getenv('IDR_JUPYTER_OAUTH_CALLBACK', '')
-c.GitHubOAuthenticator.client_id = os.getenv('IDR_JUPYTER_GITHUB_ID', '')
-c.GitHubOAuthenticator.client_secret = os.getenv('IDR_JUPYTER_GITHUB_SECRET', '')
+c.OAuthenticator.oauth_callback_url = os.getenv('IDR_JUPYTER_OAUTH_CALLBACK', '')
+c.OAuthenticator.client_id = os.getenv('IDR_JUPYTER_CLIENT_ID', '')
+c.OAuthenticator.client_secret = os.getenv('IDR_JUPYTER_CLIENT_SECRET', '')
 # Currently relying on https://github.com/IDR/oauthenticator/pull/3
 # which only supports a single Github organisation
 # Functionality for multiple organisations was added in an upstream PR
