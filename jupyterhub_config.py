@@ -10,8 +10,8 @@ import os
 c.JupyterHub.spawner_class = os.getenv('IDR_JUPYTER_SPAWNER_CLASS', 'kubespawner.KubeSpawner')
 c.JupyterHub.ip = '0.0.0.0'
 
-# Jupyterhub proxy token, optional but recommened otherwise
-# singleuser servers may become unreachable aftger a restart
+# Jupyterhub proxy token, optional but recommended otherwise
+# singleuser servers may become unreachable after a restart
 c.JupyterHub.proxy_auth_token = os.getenv('IDR_JUPYTER_PROXY_TOKEN', '')
 
 # Whitespace separated list of users
@@ -54,7 +54,7 @@ c.KubeSpawner.singleuser_fs_gid = 100
 c.KubeSpawner.hub_connect_ip = os.environ['JUPYTERHUB_PROXY_SERVICE_HOST']
 c.KubeSpawner.hub_connect_port = int(os.environ['JUPYTERHUB_PROXY_SERVICE_PORT'])
 
-# Setup two volumes, one for the user and open shared amongst all users
+# Setup two volumes, one for the user and one shared amongst all users
 c.KubeSpawner.volumes = [
   {
     'name': 'jupyter-scratch-{username}',
@@ -102,11 +102,13 @@ c.KubeSpawner.user_storage_pvc_ensure = True
 c.OAuthenticator.oauth_callback_url = os.getenv('IDR_JUPYTER_OAUTH_CALLBACK', '')
 c.OAuthenticator.client_id = os.getenv('IDR_JUPYTER_CLIENT_ID', '')
 c.OAuthenticator.client_secret = os.getenv('IDR_JUPYTER_CLIENT_SECRET', '')
-# Currently relying on https://github.com/IDR/oauthenticator/pull/3
+# Currently relying on https://github.com/IDR/oauthenticator/pull/1
 # which only supports a single Github organisation
 # Functionality for multiple organisations was added in an upstream PR
-# but it doesn't work:
+# but it didn't work at the time:
 # https://github.com/jupyterhub/oauthenticator/pull/58#issuecomment-290442794
+# This may have been fixed:
+# https://github.com/jupyterhub/oauthenticator/pull/99
 #c.GitHubOAuthenticator.github_organization_whitelist = {{ idr_jupyter_github_orgs | to_json }}
 c.GitHubOrgOAuthenticator.github_organization_whitelist = os.getenv('IDR_JUPYTER_GITHUB_ORGS', '').split()
 # Multiple hostnames/tokens for github oauth (optional):
