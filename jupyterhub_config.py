@@ -119,11 +119,10 @@ c.GitHubOAuthenticator.client_secret_hostmap = json.loads(os.getenv('IDR_JUPYTER
 
 
 ######################################################################
-# IDR internal connection settings
+# IDR connection settings
 ######################################################################
 
-c.Spawner.environment = {
-    'IDR_HOSTNAME': os.getenv('IDR_HOSTNAME'),
-    'IDR_USER': os.getenv('IDR_USER'),
-    'IDR_PASSWORD': os.getenv('IDR_PASSWORD'),
-}
+c.Spawner.environment = {}
+for name in ('OMERO_CONFIGURATION_URL', 'HOST', 'PORT', 'USER', 'PASSWORD'):
+    if os.getenv('IDR_' + name):
+        c.Spawner.environment['IDR_' + name] = os.getenv('IDR_' + name)
