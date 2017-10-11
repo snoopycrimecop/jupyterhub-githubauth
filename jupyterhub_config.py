@@ -86,6 +86,9 @@ c.KubeSpawner.user_storage_access_modes = ['ReadWriteMany']
 c.KubeSpawner.user_storage_pvc_ensure = True
 
 
+c.KubeImageChooserSpawner.dockerimages = os.getenv('IDR_JUPYTER_IMAGE_LIST', c.KubeSpawner.singleuser_image_spec).split()
+
+
 ######################################################################
 # Github authentication settings
 # Ignored for other authenticators
