@@ -85,6 +85,7 @@ c.KubeSpawner.user_storage_class = os.getenv('IDR_JUPYTERHUB_STORAGE_CLASS', 'dy
 c.KubeSpawner.user_storage_access_modes = ['ReadWriteMany']
 c.KubeSpawner.user_storage_pvc_ensure = True
 
+c.KubeSpawner.singleuser_image_pull_policy = os.getenv('IDR_JUPYTER_IMAGE_PULL', 'IfNotPresent')
 
 c.KubeImageChooserSpawner.dockerimages = os.getenv('IDR_JUPYTER_IMAGE_LIST', c.KubeSpawner.singleuser_image_spec).split()
 
